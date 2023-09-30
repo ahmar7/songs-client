@@ -1,0 +1,392 @@
+.audiojs audio {
+  width: 100%;
+  margin-bottom: 10px;
+  height: 45px;
+  background: #f1f3f4;
+}
+h2 {
+  font-weight: bold !important;
+}
+.audiojs p {
+  display: none;
+  width: 25px;
+  height: 40px;
+  margin: 0px;
+  cursor: pointer;
+}
+b,
+strong {
+  font-weight: bold !important;
+}
+.block-dis {
+  display: block !important;
+}
+.scrubber {
+  cursor: pointer;
+}
+.no-dis {
+  display: none !important;
+}
+.normal-wer {
+  text-transform: capitalize !important;
+  font-weight: normal !important;
+}
+/* .audiojs {
+  width: 100%;
+  height: 45px;
+  background: #404040;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 12px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #444),
+    color-stop(0.5, #555),
+    color-stop(0.51, #444),
+    color-stop(1, #444)
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    #444 0%,
+    #555 50%,
+    #444 51%,
+    #444 100%
+  );
+  -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+} */
+.audiojs {
+  width: 100%;
+  height: 36px;
+  background: #404040;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 12px;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #444),
+    color-stop(0.5, #555),
+    color-stop(0.51, #444),
+    color-stop(1, #444)
+  );
+  background-image: -moz-linear-gradient(
+    center top,
+    #444 0%,
+    #555 50%,
+    #444 51%,
+    #444 100%
+  );
+  -webkit-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  -o-box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.3);
+}
+.audiojs .pause {
+  background: url("../../assets/player-graphics.gif") -9px -91px no-repeat;
+}
+.audiojs .loading {
+  background: url("../../assets/player-graphics.gif") -9px -31px no-repeat;
+}
+.audiojs .play {
+  background: url("../../assets/player-graphics.gif") -9px -1px no-repeat;
+}
+.playergg {
+  background-image: url(../../assets/player-graphics.gif);
+  height: 100px;
+  width: 20px;
+  background-size: cover;
+}
+.audiojs .play-pause {
+  width: 25px;
+  height: 40px;
+  padding: 4px 6px;
+  margin: 0px;
+  float: left;
+  overflow: hidden;
+  border-right: 1px solid #000;
+}
+.audiojs p {
+  display: none;
+  width: 25px;
+  height: 40px;
+  margin: 0px;
+  cursor: pointer;
+}
+.audiojs .play {
+  display: block;
+}
+.audiojs .scrubber {
+  position: relative;
+  float: left;
+  width: 280px;
+  background: #5a5a5a;
+  height: 14px;
+  margin: 10px;
+  border-top: 1px solid #3f3f3f;
+  border-left: 0px;
+  border-bottom: 0px;
+  overflow: hidden;
+}
+.audiojs .progress {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 14px;
+  width: 0px;
+  background: #ccc;
+  z-index: 1;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #ccc),
+    color-stop(0.5, #ddd),
+    color-stop(0.51, #ccc),
+    color-stop(1, #ccc)
+  );
+  border-radius: 0 !important;
+}
+.audiojs .loaded {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 14px;
+  width: 0px;
+  background: #000;
+  background-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    color-stop(0, #222),
+    color-stop(0.5, #333),
+    color-stop(0.51, #222),
+    color-stop(1, #222)
+  );
+}
+.audiojs .time {
+  float: left;
+  height: 36px;
+  line-height: 36px;
+  margin: 0px 0px 0px 6px;
+  padding: 0px 6px 0px 12px;
+  border-left: 1px solid #000;
+  color: #ddd;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.5);
+}
+.audiojs .time em {
+  padding: 0px 2px 0px 0px;
+  color: #f9f9f9;
+  font-style: normal;
+}
+.audiojs .time strong {
+  padding: 0px 0px 0px 2px;
+  font-weight: normal;
+}
+.audiojs .error-message {
+  float: left;
+  display: none;
+  margin: 0px 10px;
+  height: 36px;
+  width: 400px;
+  overflow: hidden;
+  line-height: 36px;
+  white-space: nowrap;
+  color: #fff;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -icab-text-overflow: ellipsis;
+  -khtml-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+}
+.audiojs .error-message a {
+  color: #eee;
+  text-decoration: none;
+  padding-bottom: 1px;
+  border-bottom: 1px solid #999;
+  white-space: wrap;
+}
+
+.playing .play,
+.playing .loading,
+.playing .error {
+  display: none;
+}
+.playing .pause {
+  display: block;
+}
+.loading .play,
+.loading .pause,
+.loading .error {
+  display: none;
+}
+.loading .loading {
+  display: block;
+}
+.error .time,
+.error .play,
+.error .pause,
+.error .scrubber,
+.error .loading {
+  display: none;
+}
+.error .error {
+  display: block;
+}
+.error .play-pause p {
+  cursor: auto;
+}
+.error .error-message {
+  display: block;
+}
+.ad {
+  margin: 4em auto 0;
+  width: 342px;
+  position: relative;
+}
+.is-content {
+  z-index: 99999;
+  position: relative;
+}
+
+img {
+  max-width: 100%;
+}
+
+body {
+  background: #fff;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+.txt {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.btner {
+  background-color: #aace38;
+  border: none;
+  color: white;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 22px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+}
+
+.btner:hover {
+  background-color: #7fa92d;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.login-form {
+  margin: 5em auto 0;
+  text-align: center;
+  width: 342px;
+  position: relative;
+  border: 1px solid #ccc;
+}
+
+.logo {
+  position: absolute;
+  top: -24px;
+  left: 34.5%;
+}
+
+.login-form h1 {
+  font-size: 16px;
+  color: #000;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  line-height: 1.4em;
+  width: 61%;
+  margin: 0 auto;
+}
+@media (max-width: 1440px) {
+  .Login-form {
+    margin: 12em auto 0;
+  }
+
+  .logo {
+    left: 33%;
+  }
+}
+
+@media (max-width: 1366px) {
+  .logo {
+    left: 34%;
+  }
+}
+
+@media (max-width: 1280px) {
+  .logo {
+    left: 35.5%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .Login-form {
+    margin: 27% auto 0;
+  }
+
+  .logo {
+    left: 33.7%;
+  }
+}
+
+@media (max-width: 768px) {
+  .Login-form {
+    margin: 27% auto 0;
+  }
+
+  .logo {
+    left: 33.67%;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo {
+    left: 34%;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    left: 34%;
+  }
+}
+
+@media (max-width: 320px) {
+  .login-form {
+    margin: 5em auto 0;
+    width: 275px;
+    height: 224px;
+  }
+
+  .logo {
+    left: 31.7%;
+  }
+
+  .login-form h1 {
+    width: 75%;
+  }
+}

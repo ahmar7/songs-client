@@ -1,0 +1,267 @@
+.body,
+html {
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI",
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  font-size: 16px;
+  line-height: 1.6;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+::-webkit-scrollbar {
+  display: block;
+  background: #f1f1f1;
+  color: red;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.containered {
+  max-width: 768px !important;
+  margin: 0 auto !important;
+  padding: 10px 15px 0;
+  background: #fff;
+  box-sizing: content-box;
+}
+.content-area {
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 15px 0 0;
+}
+.header-search,
+.header-search #search-form {
+  position: relative;
+  width: 100%;
+}
+.header-search #search-form input {
+  height: 50px;
+  width: 100%;
+  padding-right: 125px;
+  padding-left: 15px;
+  border: none;
+  border: 1px solid #e6e6e6;
+  border-radius: 0;
+  outline: 0;
+  -webkit-appearance: none;
+  font-size: 16px;
+  background-color: #fff !important;
+  box-shadow: none !important;
+}
+.header-search #search-form button,
+.header-search #search-form button:hover {
+  line-height: 28px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 125px;
+  height: 50px;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  background: #333;
+  font-size: 24px;
+}
+#logo {
+  text-align: center;
+  margin: 30px 0;
+  font-weight: 700;
+}
+h1 {
+  font-weight: bold !important;
+}
+.site-title {
+  font-size: 2em;
+  line-height: 53px;
+  text-transform: uppercase;
+}
+.site-description {
+  font-variant: small-caps;
+}
+#breadcrumbs,
+.section-title {
+  text-transform: uppercase;
+}
+#breadcrumbs {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e6e6e6;
+  border-top: 1px solid #e6e6e6;
+  font-size: 13px;
+  color: #999;
+  padding-top: 10px;
+}
+.div-comments-support,
+.naa-songs-f-image {
+  text-align: center;
+  margin-right: 0;
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 10px;
+}
+
+article,
+footer,
+header,
+main {
+  display: block;
+}
+a:active,
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #000;
+  outline: 0;
+}
+.entry-title h1 {
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+h1 {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+#content a:active,
+#content a:link,
+#content a:visited,
+input:hover,
+input:hover #content a:link {
+  text-decoration: none;
+  color: #da3114;
+  outline: 0;
+}
+h1 {
+  font-size: 2em;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: 16px;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+}
+.clearfix,
+.clearfix:after {
+  clear: both;
+}
+.entry-thumbnail {
+  margin: 10px 5px 4px;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 5px #ccc;
+  height: 250px;
+  width: 250px;
+  background-color: #ccc;
+}
+.entry-title h1 {
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.song-name {
+  padding: 0 5px;
+  max-width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.entry-content h2 {
+  margin-bottom: 10px;
+  padding-top: 5px;
+  text-transform: lowercase;
+  padding-left: 3px;
+}
+.entry-content p {
+  margin-bottom: 15px;
+  margin-top: 25px;
+  text-align: justify;
+}
+.entry-content ul {
+  border-top: 1px solid #e6e6e6;
+  padding-top: 20px;
+}
+.entry-content ul li,
+.related-posts ul li,
+.related-title {
+  font-size: 16px;
+  padding: 3px 0 3px 3px;
+  list-style-position: inside;
+}
+.related-posts h3 {
+  padding: 10px;
+}
+.entry-footer {
+  margin: 15px 0;
+}
+.entry-footer h3 {
+  font-size: 100%;
+  font-weight: 400;
+  display: inline;
+}
+.entry-content a:active,
+.entry-content a:link,
+.entry-content a:visited {
+  text-decoration: none;
+  color: #da3114;
+  line-height: 42px;
+  outline: 0;
+  font-size: 18px;
+}
+#site-bottom,
+#site-bottom a:hover,
+#site-bottom a:link,
+#site-bottom a:visited {
+  font-size: 14px;
+  padding: 15px 0;
+  color: #999;
+}
+#site-bottom .copyright .left {
+  float: left;
+}
+#site-bottom .copyright .right {
+  float: right;
+}
+.div-comments-support {
+  height: 100px;
+  padding: 35px;
+  margin-top: 20px;
+  border: 1px solid #333;
+}
+.support-button {
+  background-color: #ccc;
+  border: none;
+  color: #fff;
+  padding: 5px 25px;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0 0 0;
+  cursor: pointer;
+}
+@media only screen and (max-width: 479px) {
+  .header-search #search-form button,
+  .header-search #search-form button:hover {
+    width: 65px;
+  }
+  #site-bottom .copyright,
+  #site-bottom .copyright .left,
+  #site-bottom .copyright .right {
+    float: none;
+    text-align: center;
+  }
+  .header-search #search-form input {
+    padding-right: 75px;
+  }
+}
+.hentry .entry-title {
+  margin-top: 11px;
+}
