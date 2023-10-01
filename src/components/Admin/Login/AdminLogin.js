@@ -16,12 +16,12 @@ const AdminLogin = () => {
       let res = await fetch(`${baseUrl}admin-login`, {
         method: "POST",
 
+        credentials: "include",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
           password,
         }),
-        credentials: "include",
       });
       let data = res.json();
 
