@@ -13,7 +13,7 @@ const Protected = ({ Component }) => {
         credentials: "include",
       });
       console.log(res);
-      if (res.status === 401 || 403) {
+      if (res.status === 401 || res.status === 403) {
         console.log("work", res);
         Navigate("/admin-login");
         return;
