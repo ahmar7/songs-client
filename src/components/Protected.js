@@ -13,7 +13,7 @@ const Protected = ({ Component }) => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      console.log("res: new", res);
+      console.log("res:n", res);
       if (res.status === 401 || res.status === 403) {
         Navigate("/admin-login");
         return;
@@ -28,7 +28,7 @@ const Protected = ({ Component }) => {
 
   useEffect(() => {
     getAdminAuth();
-  }, []);
+  }, [getAdminAuth]);
   if (isLoading) {
     return <div></div>;
   }
