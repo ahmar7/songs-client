@@ -19,3 +19,18 @@ export const postApi = async (endpoint, data) => {
     );
   }
 };
+export const getApi = async (endpoint, data) => {
+  try {
+    const response = await axiosService.get(endpoint, data, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    return (
+      error?.response?.data || {
+        success: false,
+        msg: error?.message,
+      }
+    );
+  }
+};
