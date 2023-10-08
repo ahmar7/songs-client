@@ -26,7 +26,6 @@ const Protected = ({ Component }) => {
   };
 
   useEffect(() => {
-    setisLoading(true);
     getAdminAuth();
   });
   if (isLoading) {
