@@ -12,11 +12,9 @@ const Protected = ({ Component }) => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-
+      console.log(res);
       if (res.status === 401 || 403) {
-        Navigate("/admin-login");
-        return;
-      } else if (!res) {
+        console.log("work", res);
         Navigate("/admin-login");
         return;
       }
@@ -26,24 +24,6 @@ const Protected = ({ Component }) => {
     }
   };
 
-  //   const getAdminAuth = async () => {
-  //     try {
-  //       const updateAbout = await getAuthApi();
-  //       console.log(updateAbout);
-  //       if (updateAbout.success === false) {
-  //         Navigate("/admin-login");
-
-  //         return;
-  //       } else if (updateAbout.status === 401 || 403) {
-  //         Navigate("/admin-login");
-  //         return;
-  //       }
-  //     } catch (error) {
-  //       alert(error?.data?.msg || error?.message || "Something went wrong");
-  //     } finally {
-  //       setisLoading(false);
-  //     }
-  //   };
   useEffect(() => {
     getAdminAuth();
   });
