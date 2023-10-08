@@ -7,18 +7,19 @@ const Protected = ({ Component }) => {
   const [isLoading, setisLoading] = useState(true);
   let getAdminAuth = async () => {
     try {
+      setisLoading(true);
       let res = await fetch(`${baseUrl}adminAuth`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      console.log(res);
+      console.log("res: ", res);
       if (res.status === 401 || res.status === 403) {
-        console.log("work", res);
         Navigate("/admin-login");
         return;
+      } else {
+        setisLoading(false);
       }
-      setisLoading(false);
     } catch (error) {
       setisLoading(false);
     }
@@ -30,11 +31,7 @@ const Protected = ({ Component }) => {
   if (isLoading) {
     return <div></div>;
   }
-  return (
-    <>
-      <Component />
-    </>
-  );
+  return <Component />;
 };
 
 export default Protected;
