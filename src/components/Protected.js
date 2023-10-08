@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { getAuthApi } from "../Api/service";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../utils/Constant";
 const Protected = ({ Component }) => {
   let Navigate = useNavigate();
   const [isLoading, setisLoading] = useState(true);
   let getAdminAuth = async () => {
-    setisDisable(true);
     try {
       let res = await fetch(`${baseUrl}adminAuth`, {
         method: "GET",
