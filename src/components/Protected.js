@@ -7,13 +7,12 @@ const Protected = ({ Component }) => {
   const [isLoading, setisLoading] = useState(true);
   let getAdminAuth = async () => {
     try {
-      setisLoading(true);
       let res = await fetch(`${baseUrl}adminAuth`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      console.log("res:n", res);
+      console.log("res:", res);
       if (res.status === 401 || res.status === 403) {
         Navigate("/admin-login");
         return;
@@ -27,8 +26,9 @@ const Protected = ({ Component }) => {
   };
 
   useEffect(() => {
+    setisLoading(true);
     getAdminAuth();
-  }, [getAdminAuth]);
+  });
   if (isLoading) {
     return <div></div>;
   }
