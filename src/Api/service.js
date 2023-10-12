@@ -6,3 +6,6 @@ export const addMovieApi = (data) => {
 export const getAuthApi = (data) => {
   return getApi("adminAuth", data);
 };
+export const isSelectedApi = (data, id) => {
+  return putApi(`isSelected/${id}`, data);
+};

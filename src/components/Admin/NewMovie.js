@@ -12,10 +12,11 @@ const NewMovie = () => {
   let Navigate = useNavigate();
   const [isValidate, setisValidate] = useState(true);
   const [test, settest] = useState(true);
-  const [slide1, setSlide1] = useState();
-  const [newSlider1, setNewSlider1] = useState([]);
+
+  const [posterLink, setposterLink] = useState();
   const [isDisable, setisDisable] = useState(false);
   const [user, setUser] = useState({
+    posterLink: "",
     movieName: "",
     castCrew: "",
     music: "",
@@ -28,10 +29,7 @@ const NewMovie = () => {
     let value = e.target.value;
     setUser({ ...user, [name]: value });
   };
-  let changeBanner1 = (e) => {
-    setNewSlider1(e.target.files[0]);
-    setSlide1(URL.createObjectURL(e.target.files[0]));
-  };
+
   //
   const [val, setVal] = useState([{ name: "", link: "" }]);
   const handleAdd = (e) => {
@@ -95,13 +93,13 @@ const NewMovie = () => {
       setisDisable(true);
       e.preventDefault();
 
-      if (isValidate || newSlider1.length < 1) {
+      if (isValidate) {
         alert("Please fill all the required fileds");
         return false;
       }
       let songs = val;
       const formData = new FormData();
-      formData.append("poster", newSlider1);
+      formData.append("poster", user.posterLink);
       formData.append("movieName", user.movieName);
 
       formData.append("castCrew", user.castCrew);
@@ -127,6 +125,7 @@ const NewMovie = () => {
   //
 
   useEffect(() => {
+    setposterLink(user.posterLink);
     for (let i = 0; i < val.length; i++) {
       setisValidate(false);
       const element = val[i];
@@ -164,21 +163,18 @@ const NewMovie = () => {
                 </div>
                 <div className="card-body">
                   <form method="POST">
-                    <div className="indiv-field upload-img">
-                      <img className="logo-to-show" src={slide1} alt="" />
-                      <label className="label" htmlFor="belowbanner1">
-                        <i class="fa-solid fa-upload"></i> Upload Poster
-                        <span>
-                          <input
-                            name="belowbanner1"
-                            type="file"
-                            accept="image/*"
-                            id="belowbanner1"
-                            required="true"
-                            onChange={changeBanner1}
-                          />
-                        </span>
-                      </label>
+                    <div className="indiv-field  upload-img">
+                      <img className="logo-to-show" src={posterLink} alt="" />
+
+                      <label htmlFor="posterLink">Poster Link</label>
+                      <input
+                        name="posterLink"
+                        placeholder="Add Poster Link"
+                        type="text"
+                        required="true"
+                        onChange={handleInput}
+                        value={user.posterLink}
+                      />
                     </div>
                     <div className="flex-items">
                       <div className="indiv-field">

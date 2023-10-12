@@ -8,11 +8,15 @@ import "react-responsive-modal/styles.css";
 import imgForm from "../../assets/banner-example.jpg";
 import "./NewMovie.css";
 import { baseUrl } from "../../utils/Constant";
+import { isSelectedApi } from "../../Api/service";
+import { toast } from "react-toastify";
 //
 
 const AllMovies = () => {
   let Navigate = useNavigate();
   const [Data, setData] = useState([]);
+  const [selected, setSelected] = useState();
+  const [allPosts, setAllPosts] = useState();
   const [user, setUser] = useState([]);
   const [userId, setUserId] = useState("");
   const [isDisable, setisDisable] = useState(false);
@@ -37,14 +41,27 @@ const AllMovies = () => {
         credentials: "include",
       });
       let data = await res.json();
+
       if (!data) {
-        Navigate("/");
+        setData("No post found");
+        return;
+      } else if (res.status === 401 || res.status === 403) {
+        Navigate("/admin-login");
       }
+
       if (res.status === 200) {
+        var filter = data.filter((item) => {
+          return item.selected === true;
+        });
+        setSelected(filter.length);
+        setAllPosts(data.length);
+        data.reverse();
         setData(data);
+        return;
       }
     } catch (error) {
-      Navigate("/");
+      alert("Something went wrong, please refresh the page");
+      window.location.reload();
     } finally {
       setisLoading(false);
     }
@@ -58,16 +75,16 @@ const AllMovies = () => {
         credentials: "include",
       });
       if (!res || res.status === 500) {
-        alert("There is something went wrong please try again later");
+        toast.error("There is something went wrong please try again later");
         return;
       }
       if (res.status === 200) {
-        // alert(`${user.movieName} deleted successfully`);
+        toast.info(`${user.movieName}  deleted successfully`);
         getData();
         return;
       }
       if (res.status === 404) {
-        alert("Movie not found");
+        toast.error("Movie not found");
         return;
       }
       if (res.status === 401) {
@@ -76,10 +93,50 @@ const AllMovies = () => {
       }
     } catch (error) {
       // setUser(false);
-      alert("There is something went wrong please try again later");
+      toast.error("There is something went wrong please try again later");
     } finally {
       setchoiceModel(false);
       setisDisable(false);
+    }
+  };
+  let valueChange = async (e, item) => {
+    e.preventDefault();
+    e.target.disabled = true;
+    if (e.target.checked) {
+      try {
+        let body = { isSelected: true };
+        const updateHeader = await isSelectedApi(body, item._id);
+
+        if (updateHeader.success) {
+          var filter = updateHeader.newCategory.filter((item) => {
+            return item.selected === true;
+          });
+          setSelected(filter.length);
+          e.target.checked = true;
+        }
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setisDisable(false);
+        e.target.disabled = false;
+      }
+    } else {
+      try {
+        let body = { isSelected: false };
+        const updateHeader = await isSelectedApi(body, item._id);
+        if (updateHeader.success) {
+          e.target.checked = false;
+          var filter = updateHeader.newCategory.filter((item) => {
+            return item.selected === true;
+          });
+          setSelected(filter.length);
+        }
+      } catch (error) {
+        toast.error(error);
+      } finally {
+        setisDisable(false);
+        e.target.disabled = false;
+      }
     }
   };
 
@@ -96,43 +153,84 @@ const AllMovies = () => {
         <div className="mt--7 container-fluid">
           <div className="row">
             <div className="mb-5 ">
-              <div className="  shadow card">
-                <div className="bg-transparent card-header">
-                  <div className="align-items-center row">
-                    <div className="col">
-                      <h2 className="text-dark mb-0">All Movies</h2>
+              {isLoading ? (
+                <div className="  shadow card">
+                  <div className="bg-transparent card-header">
+                    <div className="align-items-center row">
+                      <div className="col">
+                        <h2 className="text-dark mb-0">All Posts</h2>
+                      </div>
                     </div>
                   </div>
+                  <div className="card-body">
+                    <p className="text-dark mb-0">Loading...</p>
+                  </div>
                 </div>
-                <div className="card-body">
-                  {isLoading ? (
-                    <div>Loading...</div>
-                  ) : (
-                    <div className="chart-d">
-                      {Data.map((item, key) => (
-                        <div key={key} className="movies-data">
-                          <img src={item.poster.url} alt="" />
-                          <div className="flex-title">
-                            <p> {item.movieName}</p>
-                            <button
-                              className="btn btn-danger low-pd"
-                              onClick={() => delModal(item)}
-                            >
-                              Delete
-                            </button>
-                            <Link
-                              to={`/add-songs/${item._id}`}
-                              className="btn btn-info low-pd"
-                            >
-                              Update Songs
-                            </Link>
-                          </div>
+              ) : (
+                <div className="  shadow card">
+                  <div className="bg-transparent card-header">
+                    <div className="align-items-center row">
+                      <div className="col">
+                        <div className="post-info">
+                          <h5>All Posts: {allPosts}</h5>
+                          <h5>Selected Posts: {selected}</h5>
+                          <p>
+                            <i class="fa-solid fa-circle-info"></i> Only first
+                            60 selected posts will be shown to clients
+                          </p>
                         </div>
-                      ))}
+                        {/* <h2 className="text-dark mb-0">All Movies</h2> */}
+                      </div>
                     </div>
-                  )}
+                  </div>
+
+                  <div className="card-body">
+                    <>
+                      {/* <div className="post-info">
+                        <h5>All Posts: {allPosts}</h5>
+                        <h5>Selected Posts: {selected}</h5>
+                        <p>
+                          <i class="fa-solid fa-circle-info"></i> Only first 60
+                          selected posts will be shown to clients
+                        </p>
+                      </div> */}
+                      <br />
+                      <div className="chart-d">
+                        {Data.map((item, key) => (
+                          <div key={key} className="movies-data">
+                            <img src={item.poster} alt="" />
+                            <div className="flex-title">
+                              <p> {item.movieName}</p>
+                              <div className="flexmr">
+                                <button
+                                  className="btn btn-danger low-pd"
+                                  onClick={() => delModal(item)}
+                                >
+                                  Delete
+                                </button>
+                                <Link
+                                  to={`/add-songs/${item._id}`}
+                                  className="btn btn-info low-pd"
+                                >
+                                  Update Songs
+                                </Link>
+                                <label class="switchBtn">
+                                  <input
+                                    defaultChecked={item.selected}
+                                    type="checkbox"
+                                    onClick={(e) => valueChange(e, item)}
+                                  />
+                                  <span className="slider round"></span>
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

@@ -46,7 +46,7 @@ const SingleMovie = () => {
       let data = await res.json();
 
       if (res.status === 200) {
-        setAllSongs(data);
+        setAllSongs(data.slice(0, 5));
       }
     } catch (error) {
       setUser(false);
@@ -94,7 +94,7 @@ const SingleMovie = () => {
                         <img
                           className="async Image entry-thumbnail"
                           alt="movie poster"
-                          src={Data.poster.url}
+                          src={Data.poster}
                           itemProp="image"
                         />
                         <div className="description">

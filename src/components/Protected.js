@@ -12,7 +12,6 @@ const Protected = ({ Component }) => {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       });
-      console.log("res:", res);
       if (res.status === 401 || res.status === 403) {
         Navigate("/admin-login");
         return;
