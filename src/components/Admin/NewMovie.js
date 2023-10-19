@@ -5,6 +5,7 @@ import SideBar from "../../Layout/Sidebar";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addMovieApi } from "../../Api/service";
 import { baseUrl } from "../../utils/Constant";
+import { toast } from "react-toastify";
 
 //
 
@@ -111,13 +112,13 @@ const NewMovie = () => {
 
       const updateAbout = await addMovieApi(formData);
       if (updateAbout.success) {
-        alert(updateAbout.msg);
+        toast.success(updateAbout.msg);
         Navigate("/show-all");
       } else {
-        alert(updateAbout.msg);
+        toast.error(updateAbout.msg);
       }
     } catch (error) {
-      alert(error?.data?.msg || error?.message || "Something went wrong");
+      toast.error(error?.data?.msg || error?.message || "Something went wrong");
     } finally {
       setisDisable(false);
     }

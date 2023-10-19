@@ -15,8 +15,8 @@ export default function Router() {
     <BrowserRouter>
       <Routes>
         <Route index path="/" element={<Home />} />
-        <Route path="/allCategories/:id" element={<SingleMovie />} />
-        <Route path="/singleSong/:movie/:id" element={<SingleSong />} />
+        <Route path="/a/:id" element={<SingleMovie />} />
+        <Route path="/a/:movie/:id" element={<SingleSong />} />
         <Route path="/admin-login" element={<Login />} />
         <Route
           path="/show-all"

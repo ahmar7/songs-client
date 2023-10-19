@@ -52,10 +52,7 @@ const AllSongs = () => {
                           itemScope="itemscope"
                           itemType=" "
                         >
-                          <Link
-                            to={"/allCategories/" + item._id}
-                            rel="bookmark"
-                          >
+                          <Link to={`/a/${item.movieLink}`} rel="bookmark">
                             <img
                               width={250}
                               height={250}
@@ -68,7 +65,7 @@ const AllSongs = () => {
                           </Link>
                           <h2 itemProp="name" className="entry-title">
                             <Link
-                              to={"/allCategories/" + item._id}
+                              to={`/a/${item.movieLink}`}
                               itemProp="url"
                               rel="bookmark"
                             >

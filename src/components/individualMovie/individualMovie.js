@@ -11,6 +11,7 @@ const SingleMovie = () => {
   const [user, setUser] = useState(false);
   const [loading, setLoading] = useState(true);
   let { id } = useParams();
+
   let getData = async () => {
     setUser(true);
     try {
@@ -23,8 +24,8 @@ const SingleMovie = () => {
       let data = await res.json();
 
       if (res.status === 200) {
-        setData(data.category);
-        setSongs(data.category.songs);
+        setData(data.category[0]);
+        setSongs(data.category[0].songs);
 
         setUser(false);
       }
@@ -132,16 +133,18 @@ const SingleMovie = () => {
                       </strong>
                     </p>
                     <ol>
-                      {Songs.map((item, key) => (
-                        <li key={key}>
-                          <Link
-                            target="_blank"
-                            to={`/singleSong/${Data._id}/${item._id}`}
-                          >
-                            {item.name}
-                          </Link>
-                        </li>
-                      ))}
+                      {Songs
+                        ? Songs.map((item, key) => (
+                            <li key={key}>
+                              <Link
+                                target="_blank"
+                                to={`/a/${Data._id}/${item._id}`}
+                              >
+                                {item.name}
+                              </Link>
+                            </li>
+                          ))
+                        : ""}
                     </ol>
                     <p>
                       <strong>Description: </strong>
@@ -180,9 +183,7 @@ const SingleMovie = () => {
                     {AllSongs.map((item, key) => (
                       <div key={key} className="related-content">
                         <li>
-                          <a href={"/allCategories/" + item._id}>
-                            {item.movieName}
-                          </a>
+                          <a href={"/a/" + item._id}>{item.movieName}</a>
                         </li>
                       </div>
                     ))}
